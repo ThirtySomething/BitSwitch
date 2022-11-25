@@ -1,0 +1,3 @@
+[submodule "vendor/acutest"]
+	path = vendor/acutest
+	url = https://www.github.com/mity/acutest
