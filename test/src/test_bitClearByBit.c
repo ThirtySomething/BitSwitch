@@ -22,7 +22,23 @@
 // SOFTWARE.
 //******************************************************************************
 
-#pragma once
+#include "test_bitClearByBit.h"
+#include "bits.h"
 
-#define TEST_NO_MAIN
-#include "acutest.h"
+void test_bitClearByBit(void)
+{
+    uint32_t flags = 0xFFFFFFFF;
+    printf("\nflags : ");
+    bitPrint(flags);
+    for (uint8_t x = 0; x < 32; x++)
+    {
+        uint32_t resultReal = bitClearByBit(flags, x);
+        uint32_t resultExpected = 1;
+        resultExpected = resultExpected << x;
+        resultExpected = ~resultExpected;
+        printf("\nx [%02d]: ", x);
+        bitPrint(resultReal);
+        TEST_CHECK(resultExpected == resultReal);
+    }
+    printf("\n");
+}

@@ -24,5 +24,6 @@
 
 #pragma once
 
-#define TEST_NO_MAIN
-#include "acutest.h"
+#include "test_inc.h"
+
+void test_bitIsSetByBit(void);

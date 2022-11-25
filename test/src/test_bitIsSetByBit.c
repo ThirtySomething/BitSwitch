@@ -22,7 +22,26 @@
 // SOFTWARE.
 //******************************************************************************
 
-#pragma once
+#include "test_bitIsSetByBit.h"
+#include "bits.h"
 
-#define TEST_NO_MAIN
-#include "acutest.h"
+void test_bitIsSetByBit(void)
+{
+    uint32_t flags = 0x00000000;
+    printf("\nflags : ");
+    bitPrint(flags);
+    for (uint8_t x = 0; x < 32; x++)
+    {
+        bool isSet = bitIsSetByBit(flags, x);
+        TEST_CHECK(false == isSet);
+
+        uint32_t resultReal = bitSetByBit(flags, x);
+        isSet = bitIsSetByBit(resultReal, x);
+
+        printf("\nx [%02d]: ", x);
+        bitPrint(resultReal);
+
+        TEST_CHECK(true == isSet);
+    }
+    printf("\n");
+}
